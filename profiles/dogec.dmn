@@ -4,3 +4,5 @@ COIN_DAEMON="dogecashd"
 COIN_CLI="dogecash-cli"
 COIN_FOLDER="/root/.dogecash"
 COIN_CONFIG="dogecash.conf"
+RPC_PORT=56740
+COIN_SERVICE="DogeCash.service"
