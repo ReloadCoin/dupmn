@@ -1,6 +1,6 @@
 COIN_NAME="DogeCash"
 COIN_PATH="/usr/local/bin/"
-COIN_DAEMON="DogeCash"
+COIN_DAEMON="dogecashd"
 COIN_CLI="dogecash-cli"
 COIN_FOLDER="/root/.dogecash"
 COIN_CONFIG="dogecash.conf"
