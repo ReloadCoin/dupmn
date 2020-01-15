@@ -1,4 +1,4 @@
-# Duplicate MasterNode (dupmn)
+# Duplicate MasterNode (dupmn) Cloned from neo3587 and adapted for Reload
 
 A script to easily create and manage multiple masternodes of the same coin in the same VPS, initially made for BCARD, can be adapted for almost any other coin.
 
@@ -53,43 +53,42 @@ Check the [Usage example](#usage-example) to see the guide of the steps to follo
 
 # <a name ="usage-example"></a> Usage example
 
-Usage example based on the CARDbuyers profile:
+Usage example based on the RLD profile:
 
 First install the dupmn script (only needs to be done once):
 ``` 
-curl -sL https://raw.githubusercontent.com/neo3587/dupmn/master/dupmn_install.sh | sudo -E bash -
+curl -sL https://raw.githubusercontent.com//ReloadCoin/dupmn/master/dupmn_install.sh | sudo -E bash -
 ``` 
 Then add the coin profile (if the profile doesn't exists in the [profiles folder](https://github.com/neo3587/dupmn/tree/master/profiles), then check [Profile creation](#profile-creation)):
 ```
-wget -q https://raw.githubusercontent.com/neo3587/dupmn/master/profiles/CARDbuyers.dmn
-dupmn profadd CARDbuyers.dmn CARDbuyers
+wget -q https://raw.githubusercontent.com/ReloadCoin/dupmn/master/profiles/rld.dmn
+dupmn profadd rld.dmn rld
 ```
-Now the CARDbuyers profile is saved and the downloaded file can be removed if you want: `rm -rf CARDbuyers.dmn` (you won't need to run the `profadd` command anymore for this coin).
+Now the Reload profile is saved and the downloaded file can be removed if you want: `rm -rf rld.dmn` (you won't need to run the `profadd` command anymore for this coin).
 
-Let's create 3 extra instances (Note that you MUST already have installed the CARDbuyers node in the VPS, the script cannot obtain the binaries from nowhere):
+Let's create 3 extra instances (Note that you MUST already have installed the RLD node in the VPS, the script cannot obtain the binaries from outside the VPS):
 ```
-dupmn install CARDbuyers 
-dupmn install CARDbuyers 
-dupmn install CARDbuyers 
+dupmn install rld
+dupmn install rld
+dupmn install rld
 ```
-Every instance has it own private key, it will be shown after installing the new instance, also can be seen with `dupmn list CARDbuyers`.
+Every instance has it own private key, it will be shown after installing the new instance, also can be seen with `dupmn list rld`.
 
 Now you can manage every instance like this:
 ```
-CARDbuyers-cli-1 masternode status
-CARDbuyers-cli-2 getblockcount
-CARDbuyers-cli-3 getinfo
-CARDbuyers-cli-all masternode status
+rld-cli-1 masternode status
+Crld-rld-cli-3 getinfo
+rld-cli-all masternode status
 ```
-There's also a `CARDbuyers-cli-0`, but is just a reference to the 'main node', not a created one with dupmn.
+There's also a `rld-cli-0`, but is just a reference to the 'main node', not a created one with dupmn.
 
 When you get tired of one masternode, per example the 3rd instance, then just uninstall it with:
 ```
-dupmn uninstall CARDbuyers 3
+dupmn uninstall rld 3
 ```
 Or you can even uninstall them all (except the 'main node') with:
 ```
-dupmn uninstall CARDbuyers all
+dupmn uninstall rld all
 ```
 The new masternode instances will use the same IP and port, so the `masternode.conf` will look like this:
 ```
@@ -98,9 +97,9 @@ MN02 123.45.67.89:48451 72aQd3U3qRFsc2KviX5iWF3BrK3CxHLi23BrToikFPCCpRr5kt9 2607
 MN03 123.45.67.89:48451 71SuLvXHebyT4NtX96ygSJVMhwns9GaBuc2yfdJQjjCokDx5Cem 349acfcf2ea88ab0f9f165ebfd4b98273e260b813b757242e1f371d7075d3f94 1
 MN04 123.45.67.89:48451 719FiV3S7m874FH1A5hmRYGFUwEzd8esES8k6TJoevgJBHnmQV9 6dbff523ae79c29c48bcd77231f15c0b8354daa2ea32cb46ed0dd0fe31ec7e82 0
 ```
-Using `dupmn install CARDbuyers` will show you the masternode private key for that instance, the transaction must be obviosuly different for each masternode, you can't use the same transaction to run 2 masternodes, even if they're in the same VPS.
+Using `dupmn install rld` will show you the masternode private key for that instance, the transaction must be obviosuly different for each masternode, you can't use the same transaction to run 2 masternodes, even if they're in the same VPS.
 
-*Note: `dupmn install CARDbuyers` will show you also a different rpc port, this is NOT the port that you have to add in the `masternode.conf` file, every masternode will use the same port (48451 in case of CARDbuyers).*  
+*Note: `dupmn install rld` will show you also a different rpc port, this is NOT the port that you have to add in the `masternode.conf` file, every masternode will use the same port (24400 in case of rld).*  
 *Note 2: You can see some image examples at <a href="https://github.com/neo3587/dupmn/wiki/Image-Examples">Image Examples</a>.*
 
 # <a name ="profile-creation"></a> Profile creation
