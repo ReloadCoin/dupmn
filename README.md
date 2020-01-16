@@ -77,7 +77,7 @@ Every instance has it own private key, it will be shown after installing the new
 Now you can manage every instance like this:
 ```
 rld-cli-1 masternode status
-Crld-rld-cli-3 getinfo
+rld-rld-cli-3 getinfo
 rld-cli-all masternode status
 ```
 There's also a `rld-cli-0`, but is just a reference to the 'main node', not a created one with dupmn.
